@@ -1,0 +1,37 @@
+@codingcontext @workcontext $04/20 $low #react app &34 [
+  draw figma &102 [
+    learn figma &68
+  ]
+  component one >57 &38
+  component two that goes inside component one <38 &57 [
+    component three that you can't make til you do component two &99
+      draw figma &102 [
+        learn figma &68
+      ]
+  ]
+]
+
+# react app <
+    learn figma [68 &102
+    draw figma ]102 &68
+    component one <
+        component two
+    >
+    component three
+>
+
+
+json:
+{
+    [
+        { id: 34, type: project, name: react app, contexts: [codingcontext, workcontext], prority, due date, etc id:34 },
+        { id: 102, type: item, name: learn figma, projects: [34], hardDependents: [68] },
+        { id: 68, type: item, name: draw figma, projects: [34] hardDependencies: [102, 57] },
+        { id: 38, type: item, name: component one, softDependencies: [57] },
+        { id: 57, type: item, name: component two, softDependents: [38], hardDependents: [99] },
+        { id: 99, type: item, name: component three, hard: },
+    ]
+}
+
+
+
