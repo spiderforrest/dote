@@ -45,5 +45,6 @@ Project plan, written in the planned format for the pretty file:
         list/show
     >
     parse dates and adjust priority &9 $low
+]
 ```
 
