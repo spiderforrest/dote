@@ -1,0 +1,12 @@
+idea: adhd-friendly note-taking app
+- really just a way to quickly organize ideas and thoughts
+- things exist in single files, with single files meant to represent a unified idea, like notes on a particular topic or a to-do list
+- rather than bullet points, there are "nodes", with each one having a "text" and "detail" field
+  - nodes can be nested
+  - root node is tied to individual file: all nodes added by user are children of this node
+- file format should be as simple as possible: ideally just text with specific symbols and/or indentation to indicate nodes, kind of like markdown
+- intended to be used with a format-specific editor program, which should streamline entering info into the tree as much as possible
+  - should always have a display mode showing an overview of the whole thing visually as a tree so you can get an "outline" of what your mental map of concepts looks like
+    - is this possibly similar to UML?? will have to look into that
+
+am I just trying to make a mindmap diagrams?? will have to look more into that
