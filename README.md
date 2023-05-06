@@ -7,7 +7,7 @@ Inspiration taken from [paradigm/chore](https://github.com/paradigm/chore).
 Project plan, written in the planned format for the pretty file:
 
 ```
-#tono $03/03 $mid @portfolio &1 [
+#dote $03/03 $mid @portfolio &1 [
     X write this todo &2 >3
     settle on final syntax &3 <2 (
         current syntax plan is:
