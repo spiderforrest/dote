@@ -40,9 +40,10 @@ Project plan, written in the planned format for the pretty file:
         add
         done
         remove/delete
-        modify
+        modify-possibly pop out into external editors
         undo $low
         list/show
     >
     parse dates and adjust priority &9 $low
 ```
+
