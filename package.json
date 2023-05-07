@@ -1,0 +1,25 @@
+{
+  "name": "dote",
+  "version": "1.0.0",
+  "description": "A to-do and note-taking system centered around dependencies and priorities. Inspiration taken from [paradigm/chore](https://github.com/paradigm/chore).",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spiderforrest/dote.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spiderforrest/dote/issues"
+  },
+  "homepage": "https://github.com/spiderforrest/dote#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
