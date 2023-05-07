@@ -44,7 +44,7 @@ Any three of these nodes can have the following properties set (though some of t
 
 - **children**: a list of nodes that are children of the node.
 
-- **auxParents**: *This behaves exactly like the tree structure created by the `parents` and `children` properties, but is not correlated with it. This allows you to separately keep track of task structure and the order in which to complete them.*
+- **auxParents**: This behaves like the tree structure created by the `parents` and `children` properties, but is not correlated with it. This allows you to separately keep track of task structure and the order in which to complete them.
 
 - **auxChildren**: *Same as above, but children instead*
 
@@ -81,8 +81,8 @@ Project plan, written in the planned format for the pretty file:
         tags: int array (id)
         parents: int array (id)
         children: int array (id)
-        dependsOn: int array (id)
-        dependedBy: int array (id)
+        auxParents: int array (id)
+        auxChildren: int array (id)
         updated: date
         created: date
         completed: bool
