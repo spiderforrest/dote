@@ -11,12 +11,23 @@ local M = {}
 -- filter is just called by name with the text of the arg
 
 -- also your configs are passed in as the second arg just in casesies
+
+
 M.default = function (item)
     if item.type ~= "tag" then return true end
     return false
 end
 
 M.all = function ()
+    return true
+end
+
+-- you can also redifine the field render blacklist in these! They'll be called
+-- again and if they return a table it'll be used as the blacklist.
+M.dump = function (_,_, return_blacklist)
+    if return_blacklist then
+        return {}
+    end
     return true
 end
 

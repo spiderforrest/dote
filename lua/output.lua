@@ -64,6 +64,12 @@ local function render_field(content, item, field, indent) -- {{{
 end
 -- }}}
 
+local function check_blacklist(item) -- {{{
+    if c.filter then
+    end
+end
+-- }}}
+
 local function render_fields(item, indent) -- {{{
     local content, rendered, i = {}, {}, 1 -- lua brain small i no kno what a zee ro is
     -- first go through their fav fields
