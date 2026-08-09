@@ -12,16 +12,20 @@ M.multifilter_whitelist = true
 
 -- every filter is just called by name with the text of the arg
 -- your configs, the libs and the current item printing queue are passed
+    -- stink!! stinky. passing in the libs and recursive configs...? clever, me but like. just expose them in _G or something
 -- as args 2-4 so you can use them
 -- the queue is an array of objects, with {id, depth} showing the represented
 -- item's id and how deep in recursion it is
 
 -- this one is called when there's no args to dote
 
-M.default = function (item, _, lib, q)
-    if item.done then return false end
-    if item.hide then return false end
+M.default = function (item, configs, lib, queue)
     if item.type == "tag" then return false end
+    if not M.hidden(item, _, lib, queue) then return false end
+    return M.clean(item, _, lib, queue)
+end
+
+M.hidden = function (item, _, lib, q)
     if item.done then return false end
     if item.hide then return false end
 
@@ -31,8 +35,7 @@ M.default = function (item, _, lib, q)
         if data[id].done then return false end
         if data[id].hide then return false end
     end
-
-    return M.clean(item, _, lib, q)
+    return true
 end
 
 M.all = function ()
@@ -55,23 +58,22 @@ M.clean = function (item, _, c, q)
     return true
 end
 
-
 M.tags = function (item, ...)
     if item.type == "tag" then return true end
 
-    return M.default(item, ...)
+    return false
 end
 
 M.todos = function (item, ...)
     if item.type == "todo" then return true end
 
-    return M.default(item, ...)
+    return false
 end
 
 M.notes = function (item, ...)
     if item.type == "note" then return true end
 
-    return M.default(item, ...)
+    return false
 end
 
 return M

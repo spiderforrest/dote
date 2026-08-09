@@ -12,8 +12,8 @@ M.left_align_id = true
 -- when you show a single item does it recurse by default
 M.single_item_recurse = true
 
--- print items decending vs ascending
-M.order_descending = true
+-- print items descending vs ascending
+M.order_descending = false
 
 -- prevent it from ever rendering the same item twice
 M.never_duplicate = false
@@ -57,6 +57,7 @@ M.blacklist = {
     created = true,
     id = true,
     hide = true,
+    updated = true
 }
 
 -- list of fields with special types that need to be rendered in different formats etc
@@ -66,6 +67,7 @@ M.field_type = {
     updated = "date",
     target = "date",
     deadline = "date",
+    completed = "date",
     done = "bool",
     hidden = "bool",
     id = "id",

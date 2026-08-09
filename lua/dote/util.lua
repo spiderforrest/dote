@@ -187,6 +187,7 @@ end
 
 -- store a table of flags so they can be stripped from arg but if this is called again they'll be remembered
 local flag_cache = {}
+-- TODO; make it possble to do multiple of the same flag like --filter clean --filter todo
 M.get_flag = function (flag, bool) -- {{{
     -- check if the flag's been stored and leave it at that if so
     if flag_cache[flag] then return flag_cache[flag] end
@@ -197,6 +198,7 @@ M.get_flag = function (flag, bool) -- {{{
         if v == flag then
             if not bool then
                 if arg[i + 1] == nil then -- if flag passed by itself
+                    -- TODO; add a lookup table or something for messages for flags that aren't paths
                     M.err("The flag '" .. flag .. "' requires a path")
                 end
                 value = arg[i + 1]

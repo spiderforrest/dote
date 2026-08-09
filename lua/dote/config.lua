@@ -54,7 +54,9 @@ if #Config == 0 then
         local config_location = util.get_flag"-c" or default_config.config_file_location -- lol
 
         -- load config, warn if no config file found and skip clobber code
-        if not pcall(function() user_config = dofile(config_location) end) then
+        local success, err = pcall(function() user_config = dofile(config_location) end)
+        if not success then
+            util.warn(err)
             util.warn("Config file not found or erroring! Default location is " .. default_config.config_file_location)
             user_config = {}
         end
@@ -71,8 +73,8 @@ if #Config == 0 then
             if body then
                 -- for bools, instead of doing writing true/false you after do --no-some-config-thing or --some-config-thing for false/true
                 -- check for that and cut the -no from body
-                local _,_, rest = string.find(body, "^%-no(.+)") -- match substr after -no
-                if rest then body = rest end
+                local _,_, after_no = string.find(body, "^%-no(.+)") -- match substr after -no
+                if after_no then body = after_no end
 
                 -- tables copy by reference in Lua, so copying one creates an independent pointer
                 -- we'll move that along the Config table to find the target setting to change
@@ -122,7 +124,7 @@ if #Config == 0 then
 
                 elseif type(ptr[key]) == 'boolean' then
                     changed = true
-                    if rest then -- rest is truthy if --no is found, so inverted here
+                    if after_no then -- is truthy if --no is found, so inverted here
                         ptr[key] = false
                     else
                         ptr[key] = true

@@ -3,6 +3,8 @@ from https://gist.github.com/tylerneylon/59f4bcf316be525b30ab
 used with permission from Tyler Neylon
 tylerneylon@gmail.com
 
+MODIFIED: see below
+
 json.lua
 A compact pure-Lua JSON library.
 The main functions are: json.stringify, json.parse.

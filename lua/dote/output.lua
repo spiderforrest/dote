@@ -198,6 +198,19 @@ M.queue = function (id, filter) -- {{{
     -- print("queuer called on " .. tostring(id))
     local data = store.get()
 
+    -- walk back up the queue until we hit level zero;
+    -- if this item is present in a heigher level, we're infinite recursing! don't!
+    local search_level = M.current_queue.level
+    for i = #M.current_queue, 1, -1 do
+        if search_level == 0 then break end -- stop looking when we hit top level, this item PASS
+        if M.current_queue[i].level < search_level then -- we've stepped up one level, search from here
+            search_level = search_level - 1
+            if M.current_queue[i].id == id then -- if match, FAIL
+                return M.current_queue
+            end
+        end
+    end
+
     if not filter(data[id], c, require'dote', M.current_queue) then return M.current_queue end
     -- print(tostring(id) .. " passes filter")
 
@@ -209,10 +222,10 @@ M.queue = function (id, filter) -- {{{
     -- now do recursion
     M.current_queue.level = M.current_queue.level + 1
     for _, child_id in ipairs(data[id].children) do
-        -- checks to keep recursion finite
-        if id ~= child_id and not (c.format.never_duplicate and M.current_queue[child_id]) then
+        -- TODO; get rid of this never_duplicate shit, it reeks of not knowing what i want (stinksies)
+        -- if not (c.format.never_duplicate) then
             M.current_queue = M.queue(child_id, filter)
-        end
+        -- end
     end
     M.current_queue.level = M.current_queue.level - 1
 

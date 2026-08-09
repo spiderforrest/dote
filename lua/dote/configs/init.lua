@@ -60,6 +60,7 @@ M.action_lookup = {
     fix = "repair",
     help = "help",
 
+    scan_music = "scan_music",
     compact = "compact",
     debug = "debug",
 }
